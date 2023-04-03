@@ -30,7 +30,17 @@ const getLogs = asyncHandler(async (req, res, next) => {
         logs: log
     })
 
-    const getLogs = await Log.find()
+    let {page, size} = req.query
+    if (!page){
+        page= 1;
+    }  
+    if (!size) {
+        size= 10;
+    }  
+    const limit = parseInt(size)
+    const skip = (page-1) * size
+
+    const getLogs = await Log.find().limit(limit).skip(skip)
     res.status(200).json(getLogs);
     next();
   })
