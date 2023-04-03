@@ -52,7 +52,6 @@ const updateModel = asyncHandler(async (req, res) => {
         res.status(400)
         throw new Error('Please add a model name')
     } 
-    
     const model = await prisma.model.findUnique({
         where: { id: parseInt(req.params.id)}
       }) 
