@@ -23,5 +23,6 @@ app.use('/api/logs', require('./routes/loggerRoutes'))
 
 app.use(errorHandler)
 
-app.listen(port, () => console.log(`Server started on port ${port}`));
-
+const listener = app.listen(process.env.PORT || 5000, () => {
+    console.log("App listening on port " + listener.address().port);
+  })
