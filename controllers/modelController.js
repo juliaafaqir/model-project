@@ -1,4 +1,5 @@
 const asyncHandler = require('express-async-handler')
+const {errorHandler} = require('../middleware/errorHandler')
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
